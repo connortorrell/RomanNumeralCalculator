@@ -61,4 +61,18 @@ class RomanNumeralCalculator
     to_roman(decimal_sum)
   end
 
+  def multiply(roman_operand_1, roman_operand_2)
+    decimal_operand_1 = to_decimal(roman_operand_1)
+    decimal_operand_2 = to_decimal(roman_operand_2)
+    decimal_sum = decimal_operand_1 * decimal_operand_2
+    to_roman(decimal_sum)
+  end
+
+  def divide(roman_operand_1, roman_operand_2)
+    decimal_operand_1 = to_decimal(roman_operand_1)
+    decimal_operand_2 = to_decimal(roman_operand_2)
+    decimal_sum = decimal_operand_1 / decimal_operand_2
+    to_roman(decimal_sum)
+  end
+
 end

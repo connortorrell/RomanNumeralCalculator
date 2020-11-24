@@ -34,4 +34,20 @@ describe "RomanNumeralCalculator" do
       expect(calculator.subtract("XX", "IV")).to eq("XVI")
     end
   end
+  context "multiplying" do
+    it "gives XII for IV * III" do
+      expect(calculator.multiply("IV", "III")).to eq("XII")
+    end
+    it "gives XXVII for IX * III" do
+      expect(calculator.multiply("IX", "III")).to eq("XXVII")
+    end
+  end
+  context "dividing" do
+    it "gives IV for XII / III" do
+      expect(calculator.divide("XII", "III")).to eq("IV")
+    end
+    it "gives XI for XLIV / IV" do
+      expect(calculator.divide("XLIV", "IV")).to eq("XI")
+    end
+  end
 end
