@@ -25,6 +25,10 @@ class RomanNumeralCalculator
     sum
   end
 
+  def passed_decimal_number(roman_number_value, decimal_value)
+    roman_number_value > decimal_value
+  end
+
   def to_roman(decimal_number)
     if $roman_values.key(decimal_number) != nil
       $roman_values.key(decimal_number)
@@ -34,7 +38,7 @@ class RomanNumeralCalculator
       until decimal_value == 0
         i = 0
         while i < $roman_values.length
-          if $roman_values.values[i] > decimal_value
+          if passed_decimal_number($roman_values.values[i], decimal_value)
             decimal_value -= $roman_values.values[i - 1]
             roman_value += $roman_values.keys[i - 1]
             i = $roman_values.length
