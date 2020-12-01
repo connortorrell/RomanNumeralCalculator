@@ -5,24 +5,13 @@ class RomanNumeralCalculator
     "CD" => 400, "D" => 500, "CM" => 900, "M" => 1000]
 
   def to_decimal(roman_number)
-    reversed_roman_number = roman_number.reverse.upcase
-    sum = 0
-    i = 0
-    while i < roman_number.length
-      current_roman_numeral = $roman_values[reversed_roman_number[i]]
-      previous_roman_numeral = $roman_values[reversed_roman_number[i - 1]]
-      if i == 0
-        sum += current_roman_numeral
-      else
-        if current_roman_numeral >= previous_roman_numeral
-          sum += current_roman_numeral
-        else
-          sum -= current_roman_numeral
-        end
-      end
-      i += 1
+    previous_roman_numeral = -1
+    roman_number.upcase.chars.reverse_each.sum do |current_roman_character|
+      current_roman_numeral = $roman_values[current_roman_character]
+      multiplier = current_roman_numeral >= previous_roman_numeral ? 1 : -1
+      previous_roman_numeral = current_roman_numeral
+      current_roman_numeral * multiplier      
     end
-    sum
   end
 
   def passed_decimal_number(roman_number_value, decimal_value)
